@@ -1,0 +1,24 @@
+{
+  "name": "dockerize-it",
+  "version": "1.0.0",
+  "description": "Dockerize your application just my running our package",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justengineers/dockerize.git"
+  },
+  "keywords": [
+    "npm",
+    "docker",
+    "aws"
+  ],
+  "author": "Adele Calvo, Annette Lin, Jinsung Park, Kia Colbert",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/justengineers/dockerize/issues"
+  },
+  "homepage": "https://github.com/justengineers/dockerize#readme"
+}
