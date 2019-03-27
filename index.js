@@ -11,8 +11,7 @@ figlet('Dockerize', (err, data) => {
     return;
   }
   console.log(chalk.blue.bold(`${data}🐳`));
-
-  // Prompt for environment of the docker image
+  
   const env = [
     {
       type: 'list',
@@ -359,7 +358,6 @@ COPY ${answers.location} /docker-entrypoint-initdb.d/
             })
           }
         }
-
       })
     }
   })
