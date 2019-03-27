@@ -11,7 +11,6 @@ figlet('Dockerize', (err, data) => {
     return;
   }
   console.log(chalk.blue.bold(`${data}🐳`));
-
   const env = [
     {
       type: 'list',
