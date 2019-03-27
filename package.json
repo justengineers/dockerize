@@ -4,6 +4,7 @@
   "description": "Dockerize your application just my running our package",
   "main": "index.js",
   "scripts": {
+    "dockerize": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,5 +21,10 @@
   "bugs": {
     "url": "https://github.com/justengineers/dockerize/issues"
   },
-  "homepage": "https://github.com/justengineers/dockerize#readme"
+  "homepage": "https://github.com/justengineers/dockerize#readme",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "figlet": "^1.2.1",
+    "inquirer": "^6.2.2"
+  }
 }
