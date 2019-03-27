@@ -31,4 +31,4 @@ fs.writeFile('Dockerfile', docker, (err) => {
   console.log('The file is saved');
 });
 
-`docker build -t ${organization}/${containerName} -f DockerFile .`
+// `docker build -t ${organization}/${containerName} -f DockerFile .`

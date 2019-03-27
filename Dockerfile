@@ -16,7 +16,7 @@ RUN npm run build
 EXPOSE 3000
 
 #Create an ENTRYPOINT where you'll run node ./server/server.js
-ENTRYPOINT ["node", "./server/server.js"]
+ENTRYPOINT ["npm", "start"]
 
 # CMD will be a default command to run if no commands are givin in terminal when running the container
 # ENTRYPOINT is the same but will not be ignored if a command is given in the command line when running the container 
