@@ -159,6 +159,22 @@ figlet('Dockerize', (err, data) => {
             # ENTRYPOINT is the same but will not be ignored if a command is given in the command line when running the container
             ENTRYPOINT ["python", "${answers.appFile}"]
             `;
+            fs.writeFile('Dockerfile', docker, (err) => {
+              if (err) {
+                return err;
+              }
+              console.log('Dockerfile has been created!');
+            });
+            // if (fs.existsSync('Dockerfile')) {
+            //   exec(`docker build -t ${answers.containerName} -f Dockerfile .`, (error, stdout, stderr) => {
+            //     console.log(`stdout: ${stdout}`);
+            //     console.log(`stderr: ${stderr}`);
+            //   });
+            //   exec(`docker run -p ${answers.port}:3000 ${answers.containerName}`, (error, stdout, stderr) => {
+            //     console.log(`stdout: ${stdout}`);
+            //     console.log(`stderr: ${stderr}`);
+            //   });
+            // }
           });
         }
       });
