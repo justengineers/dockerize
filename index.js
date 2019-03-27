@@ -11,7 +11,6 @@ figlet('Dockerize', (err, data) => {
     return;
   }
   console.log(chalk.blue.bold(`${data}🐳`));
-  
   const env = [
     {
       type: 'list',
@@ -100,6 +99,16 @@ figlet('Dockerize', (err, data) => {
               }
               console.log('Dockerfile has been created!');
             });
+            // if (fs.existsSync('Dockerfile')) {
+            //   exec(`docker build -t ${answers.containerName} -f Dockerfile .`, (error, stdout, stderr) => {
+            //     console.log(`stdout: ${stdout}`);
+            //     console.log(`stderr: ${stderr}`);
+            //   });
+            //   exec(`docker run -p ${answers.port}:3000 ${answers.containerName}`, (error, stdout, stderr) => {
+            //     console.log(`stdout: ${stdout}`);
+            //     console.log(`stderr: ${stderr}`);
+            //   });
+            // }
           });
           // For runtime Python
         } else if (answers.runtime === 'python') {
@@ -161,7 +170,7 @@ figlet('Dockerize', (err, data) => {
           name: 'runtime',
           message: 'Select your runtime',
           choices: ['node', 'python'],
-        },
+        }
       ];
       inquirer.prompt(dev).then((answers) => {
         let webpackResult = '';
@@ -183,7 +192,12 @@ figlet('Dockerize', (err, data) => {
               type: 'input',
               name: 'port',
               message: "What's your current server port?",
-            }
+            },
+            {
+              type: 'input',
+              name: 'containerName',
+              message: 'Create your container name',
+            },
           ];
           inquirer.prompt(questions).then((answers) => {
             // Validate if user has a webpack
@@ -208,6 +222,16 @@ EXPOSE ${answers.port}
               }
               console.log('Dockerfile-dev has been created!');
             });
+            // if (fs.existsSync('Dockerfile-dev')) {
+            //   exec(`docker build -t ${answers.containerName} -f Dockerfile-dev .`, (error, stdout, stderr) => {
+            //     console.log(`stdout: ${stdout}`);
+            //     console.log(`stderr: ${stderr}`);
+            //   });
+            //   exec(`docker run -p ${answers.port}:3000 ${answers.containerName}`, (error, stdout, stderr) => {
+            //     console.log(`stdout: ${stdout}`);
+            //     console.log(`stderr: ${stderr}`);
+            //   });
+            // }
           })
           // For Python runtime 
         } else if (answers.runtime === 'python') {
@@ -238,6 +262,11 @@ EXPOSE ${answers.port}
               name: 'containerName',
               message: 'Create your container name',
             },
+            {
+              type: 'input',
+              name: 'containerName',
+              message: 'Create your container name',
+            },
           ];
           inquirer.prompt(questionsPython).then((answers) => {
             // User has to provide input for requirements File
@@ -262,6 +291,16 @@ EXPOSE ${answers.port}
               }
               console.log('Dockerfile-dev has been created!');
             });
+            // if (fs.existsSync('Dockerfile-dev')) {
+            //   exec(`docker build -t ${answers.containerName} -f Dockerfile-dev .`, (error, stdout, stderr) => {
+            //     console.log(`stdout: ${stdout}`);
+            //     console.log(`stderr: ${stderr}`);
+            //   });
+            //   exec(`docker run -p ${answers.port}:3000 ${answers.containerName}`, (error, stdout, stderr) => {
+            //     console.log(`stdout: ${stdout}`);
+            //     console.log(`stderr: ${stderr}`);
+            //   });
+            // }
           });
         }
       });
@@ -290,6 +329,11 @@ EXPOSE ${answers.port}
               type: 'input',
               name: 'location',
               message: "Where is your database located? Provide relative path.",
+            },
+            {
+              type: 'input',
+              name: 'containerName',
+              message: 'Create your container name',
             }
           ];
 
@@ -315,6 +359,16 @@ COPY ${answers.location} /docker-entrypoint-initdb.d/
               }
               console.log('Dockerfile-db has been created!');
             });
+            // if (fs.existsSync('Dockerfile-db')) {
+            //   exec(`docker build -t ${answers.containerName} -f Dockerfile-db .`, (error, stdout, stderr) => {
+            //     console.log(`stdout: ${stdout}`);
+            //     console.log(`stderr: ${stderr}`);
+            //   });
+            //   exec(`docker run -p ${answers.port}:3000 ${answers.containerName}`, (error, stdout, stderr) => {
+            //     console.log(`stdout: ${stdout}`);
+            //     console.log(`stderr: ${stderr}`);
+            //   });
+            // }
           })
           // For MongoDB 
         } else if (answers.runtime === 'python') {
@@ -355,6 +409,16 @@ COPY ${answers.location} /docker-entrypoint-initdb.d/
                 }
                 console.log('Dockerfile-db has been created!');
               });
+              // if (fs.existsSync('Dockerfile-db')) {
+              //   exec(`docker build -t ${answers.containerName} -f Dockerfile-db .`, (error, stdout, stderr) => {
+              //     console.log(`stdout: ${stdout}`);
+              //     console.log(`stderr: ${stderr}`);
+              //   });
+              //   exec(`docker run -p ${answers.port}:3000 ${answers.containerName}`, (error, stdout, stderr) => {
+              //     console.log(`stdout: ${stdout}`);
+              //     console.log(`stderr: ${stderr}`);
+              //   });
+              // }
             })
           }
         }
