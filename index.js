@@ -2,6 +2,7 @@ const fs = require('fs');
 const inquirer = require('inquirer');
 const figlet = require('figlet');
 const chalk = require('chalk');
+const { exec } = require('child_process');
 
 
 figlet('Dockerize', (err, data) => {
@@ -27,6 +28,11 @@ figlet('Dockerize', (err, data) => {
       type: 'confirm',
       name: 'webpack',
       message: 'Do you have an existing webpack configured?',
+    },
+    {
+      type: 'input',
+      name: 'containerName',
+      message: 'Create your container name',
     },
   ];
   inquirer.prompt(questions).then((answers) => {
@@ -71,8 +77,23 @@ figlet('Dockerize', (err, data) => {
       `;
 
     fs.writeFile('Dockerfile', docker, (err) => {
-      if (err) throw err;
-      console.log('The file is saved');
+      if (err) {
+        return err;
+      }
+      console.log('Dockerfile has been created!');
     });
+
+
+    if (fs.existsSync('Dockerfile')) {
+      exec(`docker build -t ${answers.containerName} -f Dockerfile .`, (error, stdout, stderr) => {
+        console.log(`stdout: ${stdout}`);
+        console.log(`stderr: ${stderr}`);
+      });
+
+      // exec(`docker run -p ${answers.port}:3000 ${answers.containerName}`, (error, stdout, stderr) => {
+      //   console.log(`stdout: ${stdout}`);
+      //   console.log(`stderr: ${stderr}`);
+      // });
+    }
   });
 });

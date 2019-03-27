@@ -9,11 +9,10 @@
       #RUN a command to npm install your node_modules in the container
       RUN npm install
       
-      #RUN a command to build your application in the container 
-      RUN npm run build
+      
       
       #EXPOSE your server port (3000) for when you are running in production
-      EXPOSE 8080
+      EXPOSE 3000
       
       #Create an ENTRYPOINT where you'll run node ./server/server.js
       ENTRYPOINT ["npm", "start"]
