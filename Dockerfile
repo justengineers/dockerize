@@ -13,7 +13,7 @@ RUN npm install
 RUN npm run build
 
 #EXPOSE your server port (3000) for when you are running in production
-EXPOSE 8080
+EXPOSE 3000
 
 #Create an ENTRYPOINT where you'll run node ./server/server.js
 ENTRYPOINT ["npm", "start"]
