@@ -84,20 +84,23 @@ ENTRYPOINT ["npm", "start"]
 # ENTRYPOINT is the same but will not be ignored if a command is given in the command line when running the container
 `;
 
+            console.log(nodeconfig.port);
+
             fs.writeFile('Dockerfile', docker, (err) => {
               if (err) {
                 return err;
               }
+
               console.log(chalk.red.greenBright('Your Dockerfile is ready! 🌟'));
             });
 
             // if (fs.existsSync('Dockerfile')) {
-            //   exec(`docker build -t ${answers.containerName} -f Dockerfile .`, (error, stdout, stderr) => {
+            //   exec(`docker build -t ${config.containerName} -f Dockerfile .`, (error, stdout, stderr) => {
             //     console.log(`stdout: ${stdout}`);
             //     console.log(`stderr: ${stderr}`);
             //   });
 
-            //   exec(`docker run -p ${answers.port}:3000 ${answers.containerName}`, (error, stdout, stderr) => {
+            //   exec(`docker run -p ${nodeconfig.port}:3000 ${config.containerName}`, (error, stdout, stderr) => {
             //     console.log(`stdout: ${stdout}`);
             //     console.log(`stderr: ${stderr}`);
             //   });
