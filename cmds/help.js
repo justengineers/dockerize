@@ -2,7 +2,7 @@ const figlet = require('figlet');
 const chalk = require('chalk');
 
 module.exports = () => {
-  figlet('Dockerize-it', (err, data) => {
+  figlet('Dockerize - it', (err, data) => {
     if (err) {
       console.log(err);
       console.dir(err);
