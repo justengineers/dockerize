@@ -9,8 +9,8 @@ module.exports = () => {
     case 'mkdockerfile':
       require('./cmds/mkDockerfile')();
       break;
-    case 'mkcompose':
-      require('./cmds/mkCompose')();
+    case 'mkdockercompose':
+      require('./cmds/mkDockerComposeYaml')();
       break;
     case 'help':
       require('./cmds/help')();

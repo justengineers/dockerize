@@ -1,0 +1,27 @@
+
+version: '3'
+services:
+  hi:
+    image: 'hola'
+    ports:
+      - '8080:8080'
+    volumes:
+      - .:/usr/src/app
+      - node_modules:/usr/src/app/node_modules
+    command: npm start:dev
+    depends_on:
+      - postgres-db
+    environment:
+      - DATABASE_URL: hi
+      - PORT: 3000
+  postgres-db:
+    image: 'img-db'
+    environment:
+      - POSTGRES_PASSWORD=test
+      - POSTGRES_USER=test
+      - POSTGRES_DB=hola
+    volumes:
+      - dev-db-volume:/var/lib/postgresql/data
+volumes:
+  node_modules:
+  dev-db-volume:
