@@ -1,14 +1,17 @@
-const index = require('./index');
-const fs = require('fs');
-const path = './Dockerfile';
+const path = require('path');
+const child = require('child_process');
 
-test('Creates Dockerfile', () => {
-  // arrange
-  index.figlet();
+beforeEach(() => {
+  exec = path.join(__dirname, '..', 'dockerize/bin/dockerize-it');
+  // stdio is used to configure the pipes the parent and child
+  proc = child.spawn(exec, ({stdio: 'pipe'}))
+  console.log(exec);
+});
+test('Prints help menu', () => {
   // act
-  fs.exists(path, (exist) => {
-  // assert
-    expect(exist).toBe.true();
-    
+ proc.stdout.once('data', function(output) {
+   // assert
+   expect(output.toString('utf-8')).toContain('🐳');
+   done();
+ })
   });
-})
